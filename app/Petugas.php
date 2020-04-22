@@ -30,4 +30,10 @@ class Petugas extends Authenticatable
     protected $hidden = [
         'password', 
     ];
+    public function is_admin(){
+        if($this->admin){
+            return true;
+        }
+            return false;
+    }
 }

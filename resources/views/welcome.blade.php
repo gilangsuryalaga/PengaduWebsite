@@ -41,6 +41,7 @@
             <li class="nav-item"><a href="#section-about" class="nav-link">About</a></li>
             <li class="nav-item"><a href="{{ route('login') }}" class="nav-link boldi">Login</a></li>
             <li class="nav-item"><a href="{{ route('register') }}" class="nav-link boldi">Register</a></li>
+            <li class="nav-item"><a href="{{ route('petugas.login') }}" class="nav-link boldi">Admin</a></li>
 
         </ul>
         @endauth

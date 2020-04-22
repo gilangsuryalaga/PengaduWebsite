@@ -22,6 +22,7 @@ class CreatePetugasTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('telp',13);
+            $table->boolean('admin')->default(0);
             $table->enum('level',['admin','petugas']);
             $table->timestamps();
         });

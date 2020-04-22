@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Petugas;
 use Auth;
 
 class PetugasLoginController extends Controller
@@ -25,11 +26,19 @@ class PetugasLoginController extends Controller
             'password' => 'required'
         ]);
         //attempt log in
-        if (Auth::guard('petugas')->attempt(['email'=> $request->email, 'password'=> $request->password], $request->remember)) {
-            //if success
-            return redirect()->intended(route('petugas.dashboard'));
-        }else{
+        if (Auth::guard('petugas')->attempt([
+            'email'=> $request->email, 
+            'password'=> $request->password], 
+            $request->remember
+            )) 
+        {
+            $petugas = Petugas::where('email', $request->email)->first();
+            if($petugas->is_admin()){
+                //if success
+                return redirect()->intended(route('admin.dashboard'));
+            }
+                return redirect()->intended(route('petugas.dashboard'));
+            }
             return redirect()->back()->withInput($request->only('email'));
-        }
     }
 }
