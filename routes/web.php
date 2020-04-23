@@ -38,4 +38,6 @@ Route::post('/bencana', 'PengaduanController@storebencana');
         Route::get('/tanggapan/{id}', 'TanggapanController@create')->name('petugas.tanggapan');
         Route::post('/tanggapan/{id}', 'TanggapanController@store')->name('petugas.tanggapan.submit');
         Route::get('/', 'PetugasController@index')->name('petugas.dashboard');
+        Route::get('/', 'AdminController@index')->name('admin.dashboard');
+        Route::get('/downloadPDF/{id}', 'AdminController@downloadPDF')->name('admin.generate');
     });
