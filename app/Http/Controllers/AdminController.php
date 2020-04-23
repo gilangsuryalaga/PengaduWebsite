@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function downloadPDF(Request $request, $id){
                 $tanggap['tanggap'] = \App\Tanggapan::find($id);
                 
-                $pdf = PDF::loadView('pdf', compact('tanggapan'));
+                $pdf = PDF::loadView('pdf', $tanggap);
                 return $pdf->download('invoice.pdf');
     }
 }
